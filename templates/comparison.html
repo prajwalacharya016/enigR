@@ -14,15 +14,16 @@
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">enigR</a>
+            <a class="navbar-brand" href="#"><strong>enigR</strong></a>
         </div>
         <ul class="nav navbar-nav navbar-right">
             <li><a href="#">{{ user.UserName }}</a></li>
         </ul>
     </div>
 </nav>
+<form action="/mycomparison/comparison/{{ comparison.ComparisonId }}/" method="post"> {% csrf_token %}
 <div class="container">
-    <form action="/mycomparison/comparison/{{ comparison.ComparisonId }}/" method="post"> {% csrf_token %}
+
         <div class="row">
             <div class="col-sm-4">
                 <div class="row text-center"><h2><strong>{{ comparison.FirstItemId.ItemName }}</h2></strong></div>
@@ -48,30 +49,40 @@
                 </div>
             </div>
         </div>
-    </form>
+
 </div>
 
 <div id="containerpad" class="container form-group">
     <label for="comment">Comment:</label>
-    <textarea class="form-control" rows="2" id="comment"></textarea>
+    <textarea class="form-control" rows="2" name="commenttext"></textarea>
     <div class="row text-right custompad">
         <button type="submit" class="btn btn-default" name="Comment">Comment</button>
     </div>
 </div>
+</form>
 {% for comm in comment %}
-<div class="container custompad">
+    <div class="container customcommentpad">
+        <div class="row">
+            <div class="col-sm-1">
+                <img src="https://www.w3schools.com/bootstrap/cinqueterre.jpg" alt="Cinque Terre" width="60"
+                     height="60"></div>
+            <div id="commentpad" class="col-sm-11">
+                <div class="row"><strong><em>{{ comm.UserId.UserName }}</em></strong></div>
+                <div class="row">{{ comm.Comments }}</div>
+            </div>
 
-    <div class="row">
-        <div class="col-sm-1">
-            <img src="https://www.w3schools.com/bootstrap/cinqueterre.jpg" alt="Cinque Terre" width="60"
-                 height="60"></div>
-        <div id="commentpad" class="col-sm-11">
-            <div class="row"><strong><em>{{ comm.UserId.UserName }}</em></strong></div>
-            <div class="row">{{ comm.Comments }}</div>
         </div>
+    </div>
+{% endfor %}
+
+<footer>
+    <div class="container custompad footerpad text-center">
+
+            <strong>enigR</strong>
+            <span>&copy; All right reserved</span>
 
     </div>
-</div>
-{% endfor %}
+</footer>
+
 </body>
 </html>

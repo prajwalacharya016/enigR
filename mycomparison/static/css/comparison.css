@@ -1,7 +1,13 @@
 .custompad {
     padding-top: 10px;
 }
-
+.customcommentpad {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.row{
+    word-wrap: break-word;
+}
 #vspad {
     padding-top: 100px;
 }
@@ -18,3 +24,10 @@ textarea{
     padding-left: 0px;
 }
 
+footer{
+    background-color: #f7f7f7;
+}
+
+.footerpad{
+    padding-bottom: 10px;
+}
