@@ -1,0 +1,20 @@
+.custompad {
+    padding-top: 10px;
+}
+
+#vspad {
+    padding-top: 100px;
+}
+
+#containerpad {
+    padding-top: 20px;
+}
+
+textarea{
+    resize: none;
+}
+
+#commentpad{
+    padding-left: 0px;
+}
+

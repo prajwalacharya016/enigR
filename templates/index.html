@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>I am at index</title>
+</head>
+<body>
+     {% for comp in allcomp %}
+       <a href="comparison/{{comp.ComparisonId}}"> <li>{{ comp.FirstItemId.ItemName }} vs {{ comp.SecondItemId.ItemName }}</li>
+    {% endfor %}
+</body>
+</html>

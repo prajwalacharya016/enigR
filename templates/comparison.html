@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/comparison.css' %}">
+    <title>enigR</title>
+</head>
+<body>
+
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">enigR</a>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">{{ user.UserName }}</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <form action="/mycomparison/comparison/{{ comparison.ComparisonId }}/" method="post"> {% csrf_token %}
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="row text-center"><h2><strong>{{ comparison.FirstItemId.ItemName }}</h2></strong></div>
+                <div class="row">
+                    <img src="https://www.w3schools.com/bootstrap/cinqueterre.jpg" class="center-block"
+                         alt="Cinque Terre"
+                         width="304" height="236">
+                </div>
+                <div class="row text-center custompad"><h3>Count: {{ comparison.Vote1 }}</h3></div>
+                <div class="row text-center custompad">
+                    <button type="submit" class="btn btn-default" name="Vote1">Vote</button>
+                </div>
+            </div>
+            <div id="vspad" class="col-sm-4 text-center"><h1>vs</h1></div>
+            <div class="col-sm-4">
+                <div class="row text-center"><h2><strong>{{ comparison.SecondItemId.ItemName }}</h2></strong></div>
+                <div class="row"><img src="https://www.w3schools.com/bootstrap/cinqueterre.jpg" class="center-block"
+                                      alt="Cinque Terre" width="304" height="236">
+                </div>
+                <div class="row text-center custompad"><h3>Count: {{ comparison.Vote2 }}</h3></div>
+                <div class="row text-center custompad">
+                    <button type="submit" class="btn btn-default" name="Vote2">Vote</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div id="containerpad" class="container form-group">
+    <label for="comment">Comment:</label>
+    <textarea class="form-control" rows="2" id="comment"></textarea>
+    <div class="row text-right custompad">
+        <button type="submit" class="btn btn-default" name="Comment">Comment</button>
+    </div>
+</div>
+{% for comm in comment %}
+<div class="container custompad">
+
+    <div class="row">
+        <div class="col-sm-1">
+            <img src="https://www.w3schools.com/bootstrap/cinqueterre.jpg" alt="Cinque Terre" width="60"
+                 height="60"></div>
+        <div id="commentpad" class="col-sm-11">
+            <div class="row"><strong><em>{{ comm.UserId.UserName }}</em></strong></div>
+            <div class="row">{{ comm.Comments }}</div>
+        </div>
+
+    </div>
+</div>
+{% endfor %}
+</body>
+</html>
