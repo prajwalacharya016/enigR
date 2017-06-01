@@ -10,6 +10,10 @@ def index(request):
     allcomp = ComparisonTbl.objects.all()
     return render(request, "index.html", {'allcomp':allcomp})
 
+def login(request):
+    return render(request, "login.html")
+
+
 
 def comparison(request, comparison_id):
     comparison = ComparisonTbl.objects.get(ComparisonId=comparison_id)
